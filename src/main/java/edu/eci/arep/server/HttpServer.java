@@ -74,13 +74,6 @@ public class HttpServer {
         } else {
             createResponse(out, request);
         }
-        if (request.getHttpMethod().equals("POST")) {
-            StringBuilder body = new StringBuilder();
-            while (in.ready()) {
-                body.append((char) in.read());
-            }
-            request.setResource(body.toString());
-        }
         in.close();
         out.close();
 
