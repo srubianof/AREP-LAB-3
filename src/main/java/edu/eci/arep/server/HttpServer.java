@@ -8,16 +8,13 @@ import java.io.*;
  * The type Http server.
  */
 public class HttpServer {
-    /**
-     * Gets port.
-     *
-     * @return the port
-     */
-    public int getPort() {
-        if (System.getenv("PORT") != null) {
-            return Integer.parseInt(System.getenv("PORT"));
-        }
-        return 36000; // returns default port if heroku-port isn't set(i.e. on localhost)
+    int port;
+
+    public HttpServer() {
+    }
+
+    public HttpServer(int port) {
+        this.port = port;
     }
 
     /**
@@ -27,16 +24,16 @@ public class HttpServer {
         try {
             ServerSocket serverSocket = null;
             try {
-                serverSocket = new ServerSocket(36000);
+                serverSocket = new ServerSocket(port);
             } catch (IOException e) {
-                System.err.println("Could not listen on port: 36000.");
+                System.err.println("Could not listen on port:" + port);
                 System.exit(1);
             }
             boolean running = true;
             while (running) {
                 Socket clientSocket = null;
                 try {
-                    System.out.println("Listo para recibir en puerto 36000 ...");
+                    System.out.println("Listo para recibir en puerto" + port);
                     clientSocket = serverSocket.accept();
                 } catch (IOException e) {
                     System.err.println("Accept failed.");
@@ -96,8 +93,6 @@ public class HttpServer {
     public void createResponse(PrintStream printStream, Request request) throws IOException {
         InputStream inputStream;
         File file = new File("src/main/resources" + request.getResource());
-        System.out.println(request.getResource() + "R");
-        System.out.println(request.getHttpMethod() + "M");
         if (file.exists()) {
             if (request.getResource().equals("/")) {
                 inputStream = new FileInputStream("src/main/resources/index.html");
@@ -107,7 +102,6 @@ public class HttpServer {
             printStream.print(("HTTP/1.1 201 OK\r\n"
                     + "Content-Type: " + request.getContentType() + ";"
                     + "charset=\"UTF-8\" \r\n\r\n"));
-            System.out.println(request.getContentType());
             byte[] a = new byte[4096];
             int n;
             while ((n = inputStream.read(a)) > 0) {
