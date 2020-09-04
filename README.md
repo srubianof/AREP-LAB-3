@@ -61,7 +61,7 @@ heroku local web
 
 The complete documentation of the project can be found [here](https://srubianof.github.io/arep-lab-3-docs/).
 
-The complete report of the activity can be found [here](https://www.overleaf.com/read/bknqvyzwxkgc)
+The complete report of the activity can be found [here](https://github.com/srubianof/AREP-LAB-3/blob/master/AREP_LAB_3.pdf)
 
 
 In order to generate the documentation type the following commands in the terminal:
