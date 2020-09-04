@@ -68,7 +68,6 @@ public class HttpServer {
             }
             break;
         }
-        assert request != null;
         if (!request.getHttpMethod().equals("")) {
             createResponse(out, request);
         }
