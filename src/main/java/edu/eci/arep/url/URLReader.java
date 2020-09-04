@@ -4,12 +4,25 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+ * The type Url reader.
+ */
 public class URLReader {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 //        readURL("https://ldbn.is.escuelaing.edu.co");
         readURL("http://localhost:36000/");
     }
 
+    /**
+     * Read url.
+     *
+     * @param sitetoread the sitetoread
+     */
     public static void readURL(String sitetoread) {
         try {
             // Crea el objeto que representa una URL

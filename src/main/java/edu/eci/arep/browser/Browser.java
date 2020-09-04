@@ -5,11 +5,24 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * The type Browser.
+ */
 public class Browser {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         pageCreator("http://edition.cnn.com/US/OJ/");
     }
 
+    /**
+     * Page creator.
+     *
+     * @param url the url
+     */
     public static void pageCreator(String url) {
         try {
             File file = new File(url.substring(7, 14) + ".html");

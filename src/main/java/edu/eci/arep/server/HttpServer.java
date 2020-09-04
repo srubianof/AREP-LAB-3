@@ -9,11 +9,22 @@ import java.util.Objects;
  * The type Http server.
  */
 public class HttpServer {
+    /**
+     * The Port.
+     */
     int port;
 
+    /**
+     * Instantiates a new Http server.
+     */
     public HttpServer() {
     }
 
+    /**
+     * Instantiates a new Http server.
+     *
+     * @param port the port
+     */
     public HttpServer(int port) {
         this.port = port;
     }
@@ -84,6 +95,7 @@ public class HttpServer {
      *
      * @param printStream the socket
      * @param request     the request
+     * @throws IOException the io exception
      */
     public void createResponse(PrintStream printStream, Request request) throws IOException {
         InputStream inputStream;
@@ -108,8 +120,4 @@ public class HttpServer {
         }
         printStream.close();
     }
-
-//    public static void main(String[] args) {
-//        HttpServer.start();
-//    }
 }

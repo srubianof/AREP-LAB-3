@@ -21,6 +21,8 @@ public class SparkDServerTest
     }
 
     /**
+     * Suite test.
+     *
      * @return the suite of tests being tested
      */
     public static Test suite()
