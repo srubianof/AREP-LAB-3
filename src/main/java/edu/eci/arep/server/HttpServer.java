@@ -65,7 +65,7 @@ public class HttpServer {
         while ((inputLine = in.readLine()) != null) {
             request.setHttpMethod(inputLine.split(" ")[0]);
             request.setResource(inputLine.split(" ")[1]);
-            if (!in.ready() || inputLine.isEmpty()) {
+            if (!in.ready() || inputLine.length() == 0) {
                 break;
             }
             break;
