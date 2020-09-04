@@ -11,11 +11,7 @@ public class Request {
     private String contentType;
     private Map<String, String> header;
 
-    public Request(String httpMethod, String resource) {
-        HttpMethod = httpMethod;
-        this.resource = resource;
-        this.header = new HashMap<>();
-        setContentType(resource);
+    public Request() {
     }
 
     public String getHttpMethod() {
@@ -56,6 +52,7 @@ public class Request {
 
     public void setResource(String resource) {
         this.resource = resource;
+        setContentType(this.resource);
     }
 
     public Map<String, String> getHeader() {

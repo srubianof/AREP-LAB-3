@@ -3,6 +3,7 @@ package edu.eci.arep.server;
 import javax.crypto.CipherInputStream;
 import java.net.*;
 import java.io.*;
+import java.util.Objects;
 
 /**
  * The type Http server.
@@ -55,20 +56,22 @@ public class HttpServer {
      * @throws IOException the io exception
      */
     public void proccessRequest(Socket clientSocket) throws IOException {
-        Request request = null;
+        Request request = new Request();
         PrintStream out = new PrintStream(
                 clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(clientSocket.getInputStream()));
         String inputLine;
         while ((inputLine = in.readLine()) != null) {
-            request = new Request(inputLine.split(" ")[0], inputLine.split(" ")[1]);
+            request.setHttpMethod(inputLine.split(" ")[0]);
+            request.setResource(inputLine.split(" ")[1]);
             if (!in.ready() || inputLine.isEmpty()) {
                 break;
             }
             break;
         }
-        if (!request.getHttpMethod().equals("")) {
+        if (Objects.equals(request.getHttpMethod(), "")) {
+        } else {
             createResponse(out, request);
         }
         if (request.getHttpMethod().equals("POST")) {
